@@ -64,7 +64,7 @@ class Decoder(tf.keras.layers.Layer):
         定义最后的fc层，用于预测词的概率
         your code
         """
-        this.fc = 
+        this.fc = tf.keras.layers.Dense(vocab_size, activation=tf.keras.activations.softmax)
 
     def call(self, x, hidden, enc_output, context_vector):
         # enc_output shape == (batch_size, max_length, hidden_size)
