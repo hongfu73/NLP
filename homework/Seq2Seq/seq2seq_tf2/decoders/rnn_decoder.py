@@ -85,4 +85,3 @@ class Decoder(tf.keras.layers.Layer):
         out = self.fc(output)
 
         return x, out, state
-
