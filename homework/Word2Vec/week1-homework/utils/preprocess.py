@@ -3,7 +3,7 @@ import pandas as pd
 import re
 from jieba import posseg
 import jieba
-from tokenizer import segment
+from utils.tokenizer import segment
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
