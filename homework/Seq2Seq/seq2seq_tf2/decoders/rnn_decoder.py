@@ -56,7 +56,7 @@ class Decoder(tf.keras.layers.Layer):
         your code
         """
         self.rnn = tf.keras.layers.SimpleRNN(dec_units)
-        self.gru = tf.keras.layers.GRU(dec_units)
+        self.gru = tf.keras.layers.GRU(dec_units, return_sequences=True, return_state=True)
         self.lstm = tf.keras.layers.LSTM(dec_units)
         # self.dropout = tf.keras.layers.Dropout(0.5)
         """
