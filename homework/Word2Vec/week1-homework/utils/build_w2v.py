@@ -32,6 +32,7 @@ def extract_sentence(train_x_seg_path, train_y_seg_path, test_seg_path):
 def save_sentence(lines, sentence_path):
     with open(sentence_path, 'w', encoding='utf-8') as f:
         for line in lines:
+            line = line.encode('utf-8')
             f.write('%s\n' % line.strip())
     print('save sentence:%s' % sentence_path)
 
@@ -55,7 +56,7 @@ def build(train_x_seg_path, test_y_seg_path, test_seg_path, out_path=None, sente
     # print('技师 vs 车主 similarity score:', sim)
     # load model
     model = KeyedVectors.load_word2vec_format(w2v_bin_path, binary=True)
-    # model = KeyedVectors.load(w2v_bin_path)
+    #model = KeyedVectors.load(w2v_bin_path)
     word_dict = {}
     for word in model.vocab:
         word_dict[word] = model[word]
