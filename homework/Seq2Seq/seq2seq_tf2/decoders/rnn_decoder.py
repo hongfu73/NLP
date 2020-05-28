@@ -50,12 +50,11 @@ class Decoder(tf.keras.layers.Layer):
         定义Embedding层，加载预训练的词向量
         your code
         """
-        
+        self.embedding = tf.keras.layers.Embedding(vocab_size, output_dim=embedding_dim, weights=[embedding_matrix], trainable=False)
         """
         定义单向的RNN、GRU、LSTM层
         your code
         """
-        self.embedding = tf.keras.layers.Embedding(vocab_size, output_dim=embedding_dim, embeddings_initializer=embedding_matrix)
         self.rnn = tf.keras.layers.SimpleRNN(dec_units)
         self.gru = tf.keras.layers.GRU(dec_units)
         self.lstm = tf.keras.layers.LSTM(dec_units)
@@ -64,7 +63,7 @@ class Decoder(tf.keras.layers.Layer):
         定义最后的fc层，用于预测词的概率
         your code
         """
-        this.fc = tf.keras.layers.Dense(vocab_size, activation=tf.keras.activations.softmax)
+        self.fc = tf.keras.layers.Dense(vocab_size, activation=tf.keras.activations.softmax)
 
     def call(self, x, hidden, enc_output, context_vector):
         # enc_output shape == (batch_size, max_length, hidden_size)
