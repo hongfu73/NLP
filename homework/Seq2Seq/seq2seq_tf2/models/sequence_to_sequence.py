@@ -33,7 +33,7 @@ class SequenceToSequence(tf.keras.Model):
         attentions = []
         context_vector, _ = self.attention(dec_hidden,  # shape=(16, 256)
                                            enc_output) # shape=(16, 200, 256)
-
+                                           
         for t in range(dec_tar.shape[1]): # 50
             # Teachering Forcing
             """
@@ -41,7 +41,7 @@ class SequenceToSequence(tf.keras.Model):
             your code
             如：xxx = self.decoder(), 采用Teachering Forcing方法
             """
-            _, pred, dec_hidden = self.decoder(tf.expand_dims(dec_inp[:t], 1) ,
+            _, pred, dec_hidden = self.decoder(tf.expand_dims(dec_inp[:,t], 1) ,
             																		dec_hidden,
             																		enc_output,
             																		context_vector)
