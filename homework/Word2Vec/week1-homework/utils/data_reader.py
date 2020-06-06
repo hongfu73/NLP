@@ -69,8 +69,8 @@ def build_vocab(items, sort=True, min_count=0, lower=False):
     vocab = (one line)
     reverse_vocab = (one line)
     """
-    vocab = [(words, i+1) for i,words in enumerate(result)]
-    reverse_vocab = [(words, len(result)+1 - i) for i,words in enumerate(result)]
+    vocab = {words:i for i,words in enumerate(result)}
+    reverse_vocab = {i:words for i,words in enumerate(result)}
     return vocab, reverse_vocab
 
 
